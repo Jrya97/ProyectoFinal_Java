@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Veterinaria</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐾 Sistema de Gestión Veterinaria</h1>
+            <p>Administra propietarios, mascotas y consultas</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-button active" onclick="showTab('propietarios')">Propietarios</button>
+            <button class="tab-button" onclick="showTab('mascotas')">Mascotas</button>
+            <button class="tab-button" onclick="showTab('consultas')">Consultas</button>
+        </nav>
+
+        <!-- Tab Propietarios -->
+        <div id="propietarios" class="tab-content active">
+            <div class="section">
+                <h2>Gestión de Propietarios</h2>
+                
+                <div class="form-container">
+                    <h3>Agregar/Editar Propietario</h3>
+                    <form id="propietarioForm">
+                        <input type="hidden" id="propietarioId">
+                        <div class="form-group">
+                            <label for="propietarioNombre">Nombre:</label>
+                            <input type="text" id="propietarioNombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="propietarioApellido">Apellido:</label>
+                            <input type="text" id="propietarioApellido" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="propietarioTelefono">Teléfono:</label>
+                            <input type="text" id="propietarioTelefono" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="propietarioEmail">Email:</label>
+                            <input type="email" id="propietarioEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="propietarioDireccion">Dirección:</label>
+                            <input type="text" id="propietarioDireccion">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit">Guardar</button>
+                            <button type="button" onclick="clearPropietarioForm()">Limpiar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="table-container">
+                    <h3>Lista de Propietarios</h3>
+                    <button onclick="loadPropietarios()" class="refresh-btn">🔄 Actualizar</button>
+                    <table id="propietariosTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Teléfono</th>
+                                <th>Email</th>
+                                <th>Dirección</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Mascotas -->
+        <div id="mascotas" class="tab-content">
+            <div class="section">
+                <h2>Gestión de Mascotas</h2>
+                
+                <div class="form-container">
+                    <h3>Agregar/Editar Mascota</h3>
+                    <form id="mascotaForm">
+                        <input type="hidden" id="mascotaId">
+                        <div class="form-group">
+                            <label for="mascotaNombre">Nombre:</label>
+                            <input type="text" id="mascotaNombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mascotaEspecie">Especie:</label>
+                            <input type="text" id="mascotaEspecie" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mascotaRaza">Raza:</label>
+                            <input type="text" id="mascotaRaza" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mascotaEdad">Edad:</label>
+                            <input type="number" id="mascotaEdad" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mascotaPropietarioId">ID Propietario:</label>
+                            <select id="mascotaPropietarioId" required>
+                                <option value="">Seleccionar propietario...</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit">Guardar</button>
+                            <button type="button" onclick="clearMascotaForm()">Limpiar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="table-container">
+                    <h3>Lista de Mascotas</h3>
+                    <button onclick="loadMascotas()" class="refresh-btn">🔄 Actualizar</button>
+                    <table id="mascotasTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Especie</th>
+                                <th>Raza</th>
+                                <th>Edad</th>
+                                <th>Propietario</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Consultas -->
+        <div id="consultas" class="tab-content">
+            <div class="section">
+                <h2>Gestión de Consultas</h2>
+                
+                <div class="form-container">
+                    <h3>Agregar/Editar Consulta</h3>
+                    <form id="consultaForm">
+                        <input type="hidden" id="consultaId">
+                        <div class="form-group">
+                            <label for="consultaFecha">Fecha:</label>
+                            <input type="date" id="consultaFecha" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="consultaMotivo">Motivo:</label>
+                            <input type="text" id="consultaMotivo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="consultaTratamiento">Tratamiento:</label>
+                            <textarea id="consultaTratamiento" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="consultaMascotaId">Mascota:</label>
+                            <select id="consultaMascotaId" required>
+                                <option value="">Seleccionar mascota...</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit">Guardar</button>
+                            <button type="button" onclick="clearConsultaForm()">Limpiar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="table-container">
+                    <h3>Lista de Consultas</h3>
+                    <button onclick="loadConsultas()" class="refresh-btn">🔄 Actualizar</button>
+                    <table id="consultasTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Fecha</th>
+                                <th>Motivo</th>
+                                <th>Tratamiento</th>
+                                <th>Mascota</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="loading hidden">Cargando...</div>
+    <div id="message" class="message hidden"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

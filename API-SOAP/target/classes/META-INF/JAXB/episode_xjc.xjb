@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="3.0" xmlns="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
+Visite https://eclipse-ee4j.github.io/jaxb-ri 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2025.08.12 a las 01:23:04 PM GMT-05:00 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://veterinaria.com/consultas">
+    <schemaBindings map="false">
+      <package name="com.veterinaria.consultas"/>
+    </schemaBindings>
+    <bindings scd="tns:getConsultasRequest">
+      <class ref="com.veterinaria.consultas.GetConsultasRequest"/>
+    </bindings>
+    <bindings scd="tns:getConsultasResponse">
+      <class ref="com.veterinaria.consultas.GetConsultasResponse"/>
+    </bindings>
+    <bindings scd="~tns:consulta">
+      <class ref="com.veterinaria.consultas.Consulta"/>
+    </bindings>
+    <bindings scd="tns:getConsultaRequest">
+      <class ref="com.veterinaria.consultas.GetConsultaRequest"/>
+    </bindings>
+    <bindings scd="tns:getConsultaResponse">
+      <class ref="com.veterinaria.consultas.GetConsultaResponse"/>
+    </bindings>
+    <bindings scd="tns:createConsultaRequest">
+      <class ref="com.veterinaria.consultas.CreateConsultaRequest"/>
+    </bindings>
+    <bindings scd="~tns:consultaInput">
+      <class ref="com.veterinaria.consultas.ConsultaInput"/>
+    </bindings>
+    <bindings scd="tns:createConsultaResponse">
+      <class ref="com.veterinaria.consultas.CreateConsultaResponse"/>
+    </bindings>
+    <bindings scd="tns:updateConsultaRequest">
+      <class ref="com.veterinaria.consultas.UpdateConsultaRequest"/>
+    </bindings>
+    <bindings scd="tns:updateConsultaResponse">
+      <class ref="com.veterinaria.consultas.UpdateConsultaResponse"/>
+    </bindings>
+    <bindings scd="tns:deleteConsultaRequest">
+      <class ref="com.veterinaria.consultas.DeleteConsultaRequest"/>
+    </bindings>
+    <bindings scd="tns:deleteConsultaResponse">
+      <class ref="com.veterinaria.consultas.DeleteConsultaResponse"/>
+    </bindings>
+  </bindings>
+  <bindings scd="x-schema::tns" xmlns:tns="http://veterinaria.com/mascotas">
+    <schemaBindings map="false">
+      <package name="com.veterinaria.mascotas"/>
+    </schemaBindings>
+    <bindings scd="tns:getMascotasRequest">
+      <class ref="com.veterinaria.mascotas.GetMascotasRequest"/>
+    </bindings>
+    <bindings scd="tns:getMascotasResponse">
+      <class ref="com.veterinaria.mascotas.GetMascotasResponse"/>
+    </bindings>
+    <bindings scd="~tns:mascota">
+      <class ref="com.veterinaria.mascotas.Mascota"/>
+    </bindings>
+    <bindings scd="tns:getMascotaRequest">
+      <class ref="com.veterinaria.mascotas.GetMascotaRequest"/>
+    </bindings>
+    <bindings scd="tns:getMascotaResponse">
+      <class ref="com.veterinaria.mascotas.GetMascotaResponse"/>
+    </bindings>
+    <bindings scd="tns:createMascotaRequest">
+      <class ref="com.veterinaria.mascotas.CreateMascotaRequest"/>
+    </bindings>
+    <bindings scd="~tns:mascotaInput">
+      <class ref="com.veterinaria.mascotas.MascotaInput"/>
+    </bindings>
+    <bindings scd="tns:createMascotaResponse">
+      <class ref="com.veterinaria.mascotas.CreateMascotaResponse"/>
+    </bindings>
+    <bindings scd="tns:updateMascotaRequest">
+      <class ref="com.veterinaria.mascotas.UpdateMascotaRequest"/>
+    </bindings>
+    <bindings scd="tns:updateMascotaResponse">
+      <class ref="com.veterinaria.mascotas.UpdateMascotaResponse"/>
+    </bindings>
+    <bindings scd="tns:deleteMascotaRequest">
+      <class ref="com.veterinaria.mascotas.DeleteMascotaRequest"/>
+    </bindings>
+    <bindings scd="tns:deleteMascotaResponse">
+      <class ref="com.veterinaria.mascotas.DeleteMascotaResponse"/>
+    </bindings>
+    <bindings scd="~tns:sexo">
+      <typesafeEnumClass ref="com.veterinaria.mascotas.Sexo"/>
+    </bindings>
+  </bindings>
+  <bindings scd="x-schema::tns" xmlns:tns="http://veterinaria.com/propietarios">
+    <schemaBindings map="false">
+      <package name="com.veterinaria.propietarios"/>
+    </schemaBindings>
+    <bindings scd="tns:getPropietariosRequest">
+      <class ref="com.veterinaria.propietarios.GetPropietariosRequest"/>
+    </bindings>
+    <bindings scd="tns:getPropietariosResponse">
+      <class ref="com.veterinaria.propietarios.GetPropietariosResponse"/>
+    </bindings>
+    <bindings scd="~tns:propietario">
+      <class ref="com.veterinaria.propietarios.Propietario"/>
+    </bindings>
+    <bindings scd="tns:getPropietarioRequest">
+      <class ref="com.veterinaria.propietarios.GetPropietarioRequest"/>
+    </bindings>
+    <bindings scd="tns:getPropietarioResponse">
+      <class ref="com.veterinaria.propietarios.GetPropietarioResponse"/>
+    </bindings>
+    <bindings scd="tns:createPropietarioRequest">
+      <class ref="com.veterinaria.propietarios.CreatePropietarioRequest"/>
+    </bindings>
+    <bindings scd="~tns:propietarioInput">
+      <class ref="com.veterinaria.propietarios.PropietarioInput"/>
+    </bindings>
+    <bindings scd="tns:createPropietarioResponse">
+      <class ref="com.veterinaria.propietarios.CreatePropietarioResponse"/>
+    </bindings>
+    <bindings scd="tns:updatePropietarioRequest">
+      <class ref="com.veterinaria.propietarios.UpdatePropietarioRequest"/>
+    </bindings>
+    <bindings scd="tns:updatePropietarioResponse">
+      <class ref="com.veterinaria.propietarios.UpdatePropietarioResponse"/>
+    </bindings>
+    <bindings scd="tns:deletePropietarioRequest">
+      <class ref="com.veterinaria.propietarios.DeletePropietarioRequest"/>
+    </bindings>
+    <bindings scd="tns:deletePropietarioResponse">
+      <class ref="com.veterinaria.propietarios.DeletePropietarioResponse"/>
+    </bindings>
+  </bindings>
+</bindings>
+

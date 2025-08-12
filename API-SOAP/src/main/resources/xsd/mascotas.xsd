@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://veterinaria.com/mascotas"
+           targetNamespace="http://veterinaria.com/mascotas"
+           elementFormDefault="qualified">
+
+    <xs:element name="getMascotasRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getMascotasResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mascota" type="tns:mascota" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getMascotaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getMascotaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mascota" type="tns:mascota"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createMascotaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mascota" type="tns:mascotaInput"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createMascotaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mascota" type="tns:mascota"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateMascotaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+                <xs:element name="mascota" type="tns:mascotaInput"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateMascotaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mascota" type="tns:mascota"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteMascotaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteMascotaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="mascota">
+        <xs:sequence>
+            <xs:element name="idMascota" type="xs:int"/>
+            <xs:element name="idPropietario" type="xs:int"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="especie" type="xs:string"/>
+            <xs:element name="raza" type="xs:string" minOccurs="0"/>
+            <xs:element name="fechaNacimiento" type="xs:date" minOccurs="0"/>
+            <xs:element name="peso" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="sexo" type="tns:sexo" minOccurs="0"/>
+            <xs:element name="fechaRegistro" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="mascotaInput">
+        <xs:sequence>
+            <xs:element name="idPropietario" type="xs:int"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="especie" type="xs:string"/>
+            <xs:element name="raza" type="xs:string" minOccurs="0"/>
+            <xs:element name="fechaNacimiento" type="xs:date" minOccurs="0"/>
+            <xs:element name="peso" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="sexo" type="tns:sexo" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="sexo">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Macho"/>
+            <xs:enumeration value="Hembra"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

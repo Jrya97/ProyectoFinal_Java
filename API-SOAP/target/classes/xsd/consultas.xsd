@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://veterinaria.com/consultas"
+           targetNamespace="http://veterinaria.com/consultas"
+           elementFormDefault="qualified">
+
+    <xs:element name="getConsultasRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getConsultasResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="consulta" type="tns:consulta" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getConsultaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getConsultaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="consulta" type="tns:consulta"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createConsultaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="consulta" type="tns:consultaInput"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createConsultaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="consulta" type="tns:consulta"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateConsultaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+                <xs:element name="consulta" type="tns:consultaInput"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateConsultaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="consulta" type="tns:consulta"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteConsultaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteConsultaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="consulta">
+        <xs:sequence>
+            <xs:element name="idConsulta" type="xs:int"/>
+            <xs:element name="idMascota" type="xs:int"/>
+            <xs:element name="fechaConsulta" type="xs:dateTime"/>
+            <xs:element name="motivo" type="xs:string"/>
+            <xs:element name="diagnostico" type="xs:string" minOccurs="0"/>
+            <xs:element name="tratamiento" type="xs:string" minOccurs="0"/>
+            <xs:element name="observaciones" type="xs:string" minOccurs="0"/>
+            <xs:element name="costo" type="xs:decimal" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="consultaInput">
+        <xs:sequence>
+            <xs:element name="idMascota" type="xs:int"/>
+            <xs:element name="fechaConsulta" type="xs:dateTime"/>
+            <xs:element name="motivo" type="xs:string"/>
+            <xs:element name="diagnostico" type="xs:string" minOccurs="0"/>
+            <xs:element name="tratamiento" type="xs:string" minOccurs="0"/>
+            <xs:element name="observaciones" type="xs:string" minOccurs="0"/>
+            <xs:element name="costo" type="xs:decimal" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

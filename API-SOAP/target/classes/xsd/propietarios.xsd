@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://veterinaria.com/propietarios"
+           targetNamespace="http://veterinaria.com/propietarios"
+           elementFormDefault="qualified">
+
+    <xs:element name="getPropietariosRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getPropietariosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="propietario" type="tns:propietario" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPropietarioRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPropietarioResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="propietario" type="tns:propietario"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createPropietarioRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="propietario" type="tns:propietarioInput"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createPropietarioResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="propietario" type="tns:propietario"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updatePropietarioRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+                <xs:element name="propietario" type="tns:propietarioInput"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updatePropietarioResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="propietario" type="tns:propietario"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deletePropietarioRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deletePropietarioResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="propietario">
+        <xs:sequence>
+            <xs:element name="idPropietario" type="xs:int"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="apellido" type="xs:string"/>
+            <xs:element name="telefono" type="xs:string"/>
+            <xs:element name="email" type="xs:string" minOccurs="0"/>
+            <xs:element name="direccion" type="xs:string" minOccurs="0"/>
+            <xs:element name="fechaRegistro" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="propietarioInput">
+        <xs:sequence>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="apellido" type="xs:string"/>
+            <xs:element name="telefono" type="xs:string"/>
+            <xs:element name="email" type="xs:string" minOccurs="0"/>
+            <xs:element name="direccion" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

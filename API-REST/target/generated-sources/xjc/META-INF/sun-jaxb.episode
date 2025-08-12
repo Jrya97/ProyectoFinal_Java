@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" if-exists="true" version="2.1">
+      
+    <!--
+
+Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
+Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2025.08.12 a las 03:26:00 PM GMT-05:00 
+
+  -->
+      
+    <bindings xmlns:tns="http://veterinaria.com/propietarios" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="com.veterinaria.rest.soap.client"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="tns:getPropietariosRequest">
+                  
+            <class ref="com.veterinaria.rest.soap.client.GetPropietariosRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getPropietariosResponse">
+                  
+            <class ref="com.veterinaria.rest.soap.client.GetPropietariosResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:propietario">
+                  
+            <class ref="com.veterinaria.rest.soap.client.Propietario"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getPropietarioRequest">
+                  
+            <class ref="com.veterinaria.rest.soap.client.GetPropietarioRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getPropietarioResponse">
+                  
+            <class ref="com.veterinaria.rest.soap.client.GetPropietarioResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:createPropietarioRequest">
+                  
+            <class ref="com.veterinaria.rest.soap.client.CreatePropietarioRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:propietarioInput">
+                  
+            <class ref="com.veterinaria.rest.soap.client.PropietarioInput"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:createPropietarioResponse">
+                  
+            <class ref="com.veterinaria.rest.soap.client.CreatePropietarioResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:updatePropietarioRequest">
+                  
+            <class ref="com.veterinaria.rest.soap.client.UpdatePropietarioRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:updatePropietarioResponse">
+                  
+            <class ref="com.veterinaria.rest.soap.client.UpdatePropietarioResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:deletePropietarioRequest">
+                  
+            <class ref="com.veterinaria.rest.soap.client.DeletePropietarioRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:deletePropietarioResponse">
+                  
+            <class ref="com.veterinaria.rest.soap.client.DeletePropietarioResponse"/>
+                
+        </bindings>
+          
+    </bindings>
+      
+    <bindings xmlns:tns="http://veterinaria.com/mascotas" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="com.veterinaria.rest.soap.client"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="tns:getMascotasRequest">
+                  
+            <class ref="com.veterinaria.rest.soap.client.GetMascotasRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getMascotasResponse">
+                  
+            <class ref="com.veterinaria.rest.soap.client.GetMascotasResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:mascota">
+                  
+            <class ref="com.veterinaria.rest.soap.client.Mascota"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getMascotaRequest">
+                  
+            <class ref="com.veterinaria.rest.soap.client.GetMascotaRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getMascotaResponse">
+                  
+            <class ref="com.veterinaria.rest.soap.client.GetMascotaResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:createMascotaRequest">
+                  
+            <class ref="com.veterinaria.rest.soap.client.CreateMascotaRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:mascotaInput">
+                  
+            <class ref="com.veterinaria.rest.soap.client.MascotaInput"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:createMascotaResponse">
+                  
+            <class ref="com.veterinaria.rest.soap.client.CreateMascotaResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:updateMascotaRequest">
+                  
+            <class ref="com.veterinaria.rest.soap.client.UpdateMascotaRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:updateMascotaResponse">
+                  
+            <class ref="com.veterinaria.rest.soap.client.UpdateMascotaResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:deleteMascotaRequest">
+                  
+            <class ref="com.veterinaria.rest.soap.client.DeleteMascotaRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:deleteMascotaResponse">
+                  
+            <class ref="com.veterinaria.rest.soap.client.DeleteMascotaResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:sexo">
+                  
+            <typesafeEnumClass ref="com.veterinaria.rest.soap.client.Sexo"/>
+                
+        </bindings>
+          
+    </bindings>
+      
+    <bindings xmlns:tns="http://veterinaria.com/consultas" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="com.veterinaria.rest.soap.client"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="tns:getConsultasRequest">
+                  
+            <class ref="com.veterinaria.rest.soap.client.GetConsultasRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getConsultasResponse">
+                  
+            <class ref="com.veterinaria.rest.soap.client.GetConsultasResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:consulta">
+                  
+            <class ref="com.veterinaria.rest.soap.client.Consulta"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getConsultaRequest">
+                  
+            <class ref="com.veterinaria.rest.soap.client.GetConsultaRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getConsultaResponse">
+                  
+            <class ref="com.veterinaria.rest.soap.client.GetConsultaResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:createConsultaRequest">
+                  
+            <class ref="com.veterinaria.rest.soap.client.CreateConsultaRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:consultaInput">
+                  
+            <class ref="com.veterinaria.rest.soap.client.ConsultaInput"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:createConsultaResponse">
+                  
+            <class ref="com.veterinaria.rest.soap.client.CreateConsultaResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:updateConsultaRequest">
+                  
+            <class ref="com.veterinaria.rest.soap.client.UpdateConsultaRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:updateConsultaResponse">
+                  
+            <class ref="com.veterinaria.rest.soap.client.UpdateConsultaResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:deleteConsultaRequest">
+                  
+            <class ref="com.veterinaria.rest.soap.client.DeleteConsultaRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:deleteConsultaResponse">
+                  
+            <class ref="com.veterinaria.rest.soap.client.DeleteConsultaResponse"/>
+                
+        </bindings>
+          
+    </bindings>
+    
+</bindings>

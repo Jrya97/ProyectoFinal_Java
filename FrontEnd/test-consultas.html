@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Consultas</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        .form-group { margin: 10px 0; }
+        label { display: block; margin-bottom: 5px; }
+        input, select, textarea { width: 100%; padding: 8px; margin-bottom: 10px; }
+        button { padding: 10px 20px; margin: 5px; }
+        .log { background: #f5f5f5; padding: 10px; margin: 10px 0; border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Test Específico - Consultas</h1>
+    
+    <div class="section">
+        <h2>Cargar Datos</h2>
+        <button onclick="loadMascotasForTest()">Cargar Mascotas</button>
+        <button onclick="loadConsultasForTest()">Cargar Consultas</button>
+        <div id="mascotasData"></div>
+        <div id="consultasData"></div>
+    </div>
+    
+    <div class="section">
+        <h2>Test Crear Consulta</h2>
+        <div class="form-group">
+            <label>Fecha:</label>
+            <input type="date" id="testFecha" value="2025-01-12">
+        </div>
+        <div class="form-group">
+            <label>Motivo:</label>
+            <input type="text" id="testMotivo" value="Consulta de prueba">
+        </div>
+        <div class="form-group">
+            <label>Tratamiento:</label>
+            <textarea id="testTratamiento">Tratamiento de prueba</textarea>
+        </div>
+        <div class="form-group">
+            <label>Mascota ID:</label>
+            <select id="testMascotaId">
+                <option value="">Seleccionar...</option>
+            </select>
+        </div>
+        <button onclick="testCreateConsulta()">Crear Consulta</button>
+        <button onclick="testEditLastConsulta()">Editar Última Consulta</button>
+    </div>
+    
+    <div class="section">
+        <h2>Logs</h2>
+        <div id="logs"></div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8080/api';
+        let lastConsultaId = null;
+        let mascotas = [];
+        let consultas = [];
+        
+        function log(message) {
+            const logs = document.getElementById('logs');
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log';
+            logEntry.textContent = new Date().toLocaleTimeString() + ': ' + message;
+            logs.appendChild(logEntry);
+            console.log(message);
+        }
+        
+        async function apiCall(endpoint, method = 'GET', data = null) {
+            const url = API_BASE_URL + endpoint;
+            const options = {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            
+            if (data) {
+                options.body = JSON.stringify(data);
+            }
+            
+            log(`API Call: ${method} ${url}`);
+            if (data) log(`Data sent: ${JSON.stringify(data)}`);
+            
+            try {
+                const response = await fetch(url, options);
+                log(`Response status: ${response.status}`);
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`HTTP ${response.status}: ${errorText}`);
+                }
+                
+                const result = await response.json();
+                log(`Response data: ${JSON.stringify(result)}`);
+                return result;
+            } catch (error) {
+                log(`Error: ${error.message}`);
+                throw error;
+            }
+        }
+        
+        async function loadMascotasForTest() {
+            try {
+                mascotas = await apiCall('/mascotas');
+                const select = document.getElementById('testMascotaId');
+                select.innerHTML = '<option value="">Seleccionar...</option>';
+                
+                mascotas.forEach(mascota => {
+                    const option = document.createElement('option');
+                    option.value = mascota.id;
+                    option.textContent = `${mascota.id} - ${mascota.nombre} (${mascota.especie})`;
+                    select.appendChild(option);
+                });
+                
+                const result = document.getElementById('mascotasData');
+                result.innerHTML = `<h3>Mascotas cargadas: ${mascotas.length}</h3><pre>${JSON.stringify(mascotas, null, 2)}</pre>`;
+                log(`Cargadas ${mascotas.length} mascotas`);
+            } catch (error) {
+                log(`Error cargando mascotas: ${error.message}`);
+            }
+        }
+        
+        async function loadConsultasForTest() {
+            try {
+                consultas = await apiCall('/consultas');
+                const result = document.getElementById('consultasData');
+                
+                let html = `<h3>Consultas cargadas: ${consultas.length}</h3>`;
+                html += '<table><tr><th>ID</th><th>Fecha</th><th>Motivo</th><th>Tratamiento</th><th>Mascota</th></tr>';
+                
+                consultas.forEach(c => {
+                    const fecha = c.fechaConsulta || c.fecha || 'N/A';
+                    const mascotaInfo = c.mascota ? `ID: ${c.mascota.id} - ${c.mascota.nombre}` : `ID: ${c.mascotaId || 'N/A'}`;
+                    html += `<tr><td>${c.id}</td><td>${fecha}</td><td>${c.motivo}</td><td>${c.tratamiento}</td><td>${mascotaInfo}</td></tr>`;
+                });
+                html += '</table>';
+                html += `<pre>${JSON.stringify(consultas, null, 2)}</pre>`;
+                
+                result.innerHTML = html;
+                log(`Cargadas ${consultas.length} consultas`);
+            } catch (error) {
+                log(`Error cargando consultas: ${error.message}`);
+            }
+        }
+        
+        async function testCreateConsulta() {
+            try {
+                const mascotaId = document.getElementById('testMascotaId').value;
+                if (!mascotaId) {
+                    log('Error: Debe seleccionar una mascota');
+                    return;
+                }
+                
+                const data = {
+                    fechaConsulta: document.getElementById('testFecha').value,
+                    motivo: document.getElementById('testMotivo').value,
+                    tratamiento: document.getElementById('testTratamiento').value,
+                    mascota: {
+                        id: parseInt(mascotaId)
+                    }
+                };
+                
+                const result = await apiCall('/consultas', 'POST', data);
+                lastConsultaId = result.id;
+                log(`Consulta creada exitosamente con ID: ${result.id}`);
+                loadConsultasForTest();
+            } catch (error) {
+                log(`Error creando consulta: ${error.message}`);
+            }
+        }
+        
+        async function testEditLastConsulta() {
+            if (!lastConsultaId && consultas.length > 0) {
+                lastConsultaId = consultas[consultas.length - 1].id;
+            }
+            
+            if (!lastConsultaId) {
+                log('No hay consulta para editar. Crea una primero.');
+                return;
+            }
+            
+            try {
+                // Primero obtener la consulta
+                const consulta = await apiCall(`/consultas/${lastConsultaId}`);
+                log(`Consulta obtenida para editar: ${JSON.stringify(consulta)}`);
+                
+                const mascotaId = document.getElementById('testMascotaId').value;
+                if (!mascotaId) {
+                    log('Error: Debe seleccionar una mascota para editar');
+                    return;
+                }
+                
+                const data = {
+                    fechaConsulta: document.getElementById('testFecha').value,
+                    motivo: document.getElementById('testMotivo').value + ' EDITADO',
+                    tratamiento: document.getElementById('testTratamiento').value + ' EDITADO',
+                    mascota: {
+                        id: parseInt(mascotaId)
+                    }
+                };
+                
+                const result = await apiCall(`/consultas/${lastConsultaId}`, 'PUT', data);
+                log(`Consulta editada exitosamente`);
+                loadConsultasForTest();
+            } catch (error) {
+                log(`Error editando consulta: ${error.message}`);
+            }
+        }
+        
+        // Cargar datos iniciales
+        window.onload = function() {
+            loadMascotasForTest();
+            loadConsultasForTest();
+        };
+    </script>
+</body>
+</html>
