@@ -34,7 +34,6 @@ public class Propietario {
     @OneToMany(mappedBy = "propietario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Mascota> mascotas;
     
-    // Constructores
     public Propietario() {
         this.fechaRegistro = LocalDateTime.now();
     }

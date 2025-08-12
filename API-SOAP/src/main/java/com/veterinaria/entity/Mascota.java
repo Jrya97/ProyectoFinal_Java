@@ -51,7 +51,6 @@ public class Mascota {
         Macho, Hembra
     }
     
-    // Constructores
     public Mascota() {
         this.fechaRegistro = LocalDateTime.now();
     }

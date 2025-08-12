@@ -15,7 +15,7 @@ public class SoapClientConfig {
     @Bean
     public Jaxb2Marshaller marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        // Estos paquetes se generarán automáticamente desde los WSDLs
+
         marshaller.setContextPath("com.veterinaria.rest.soap.client");
         return marshaller;
     }
